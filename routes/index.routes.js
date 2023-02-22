@@ -7,6 +7,9 @@ router.get("/", (req, res, next) => {
 // Auth routes
 router.use('/auth', require('./auth.routes'))
 
+// Work routes
+router.use('/work', require('./work.routes'))
+
 // Upload routes
 router.use('/upload', require('./upload.routes'))
 
