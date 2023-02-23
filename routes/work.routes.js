@@ -15,11 +15,24 @@ router.post('/create', (req, res, next) => {
 
 // Find all works
 router.get('/all', ( req, res, next ) => {
-     Work
+     
+    Work
         .find()
+        .limit(4)
+        .sort({createdAt: -1})
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 }) 
+
+// Find one specific work
+router.get('/one/:work_id', (req, res, next) => {
+
+    const { work_id } = req.params
+    Work
+        .findById(work_id)
+        .then(response => res.json(response))
+        .catch(err => res.status(500).json(err))
+})  
 
 // Edit work
 router.put('/edit/:work_id', ( req, res, next ) => {
